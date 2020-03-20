@@ -8,6 +8,9 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '1.2.3'
 # Use Puma as the app server
+
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+
 gem 'puma', '~> 4.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
