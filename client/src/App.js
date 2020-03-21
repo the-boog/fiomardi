@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import './App.css';
+import React, { Fragment } from "react";
+import "./App.css";
 import Navbar from "./components/Navbar";
 import { Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
@@ -10,8 +10,8 @@ const App = () => (
   <Fragment>
     <Logo />
     <Navbar />
-      <Route exact path="/" component={Home} />
-      <Route exact path="/inventory" component={Inventory} />
+    <Route exact path="/" component={Home} />
+    <Route exact path="/inventory" component={Inventory} />
   </Fragment>
 );
 
