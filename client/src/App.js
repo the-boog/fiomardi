@@ -4,16 +4,15 @@ import Navbar from "./components/Navbar";
 import { Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Logo from "./components/Logo";
+import Inventory from "./components/Inventory/Inventory";
 
 const App = () => (
   <Fragment>
     <Logo />
     <Navbar />
       <Route exact path="/" component={Home} />
-      <div>
-        hi
-      </div>
-    </Fragment>
+      <Route exact path="/inventory" component={Inventory} />
+  </Fragment>
 );
 
 export default App;
