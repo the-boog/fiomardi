@@ -1,6 +1,11 @@
 import React from "react";
 import { Table, Icon } from "semantic-ui-react";
 import MakeFilter from "./Filters/MakeFilter";
+import BodyStyleFilter from "./Filters/BodyStyleFilter";
+import ColorFilter from "./Filters/ColorFilter";
+import ModelFilter from "./Filters/ModelFilter";
+import ModelYearFilter from "./Filters/ModelYearFilter";
+import PriceFilter from "./Filters/PriceFilter";
 
 class Inventory extends React.Component {
   state = {
@@ -12,8 +17,28 @@ class Inventory extends React.Component {
     activePrice: false
   };
 
-  handleclickMake = () => {
-    this.setState({ activeMake: !this.state.activeMake });
+  handleClick = input => {
+    console.log(!this.state.activeMake);
+    switch (input) {
+      case "activeMake":
+        this.setState({ activeMake: !this.state.activeMake });
+        break;
+      case "activeModel":
+        this.setState({ activeModel: !this.state.activeModel });
+        break;
+      case "activeBodyStyle":
+        this.setState({ activeBodyStyle: !this.state.activeBodyStyle });
+        break;
+      case "activeColor":
+        this.setState({ activeColor: !this.state.activeColor });
+        break;
+      case "activeModelYear":
+        this.setState({ activeModelYear: !this.state.activeModelYear });
+        break;
+      case "activePrice":
+        this.setState({ activePrice: !this.state.activePrice });
+        break;
+    }
   };
 
   render() {
@@ -48,7 +73,7 @@ class Inventory extends React.Component {
                 <Table.Cell
                   selectable
                   style={{ backgroundColor: "#b5b5b5" }}
-                  onClick={this.handleclickMake}
+                  onClick={() => this.handleClick("activeMake")}
                 >
                   Make
                   <Icon name="dropdown" />
@@ -58,34 +83,73 @@ class Inventory extends React.Component {
                 {this.state.activeMake === true ? <MakeFilter /> : null}
               </Table.Row>
               <Table.Row>
-                <Table.Cell selectable style={{ backgroundColor: "#b5b5b5" }}>
+                <Table.Cell
+                  selectable
+                  style={{ backgroundColor: "#b5b5b5" }}
+                  onClick={() => this.handleClick("activeModel")}
+                >
                   Model
                   <Icon name="dropdown" />
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell selectable style={{ backgroundColor: "#b5b5b5" }}>
+                {this.state.activeModel === true ? <ModelFilter /> : null}
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell
+                  selectable
+                  style={{ backgroundColor: "#b5b5b5" }}
+                  onClick={() => this.handleClick("activeBodyStyle")}
+                >
                   Body Style
                   <Icon name="dropdown" />
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell selectable style={{ backgroundColor: "#b5b5b5" }}>
+                {this.state.activeBodyStyle === true ? (
+                  <BodyStyleFilter />
+                ) : null}
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell
+                  selectable
+                  style={{ backgroundColor: "#b5b5b5" }}
+                  onClick={() => this.handleClick("activeColor")}
+                >
                   Color
                   <Icon name="dropdown" />
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell selectable style={{ backgroundColor: "#b5b5b5" }}>
+                {this.state.activeColor === true ? <ColorFilter /> : null}
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell
+                  selectable
+                  style={{ backgroundColor: "#b5b5b5" }}
+                  onClick={() => this.handleClick("activeModelYear")}
+                >
                   Model Year
                   <Icon name="dropdown" />
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell selectable style={{ backgroundColor: "#b5b5b5" }}>
+                {this.state.activeModelYear === true ? (
+                  <ModelYearFilter />
+                ) : null}
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell
+                  selectable
+                  style={{ backgroundColor: "#b5b5b5" }}
+                  onClick={() => this.handleClick("activePrice")}
+                >
                   Price
                   <Icon name="dropdown" />
                 </Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                {this.state.activePrice === true ? <PriceFilter /> : null}
               </Table.Row>
             </Table.Body>
           </Table>

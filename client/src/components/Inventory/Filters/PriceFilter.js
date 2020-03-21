@@ -6,8 +6,8 @@ class MakeFilter extends React.Component {
     return (
       <>
         <Table.Cell>
-          <div onClick={this.props.test}>Honda</div>
-          <div>Toyota</div>
+          <div onClick={this.props.test}>0-5000</div>
+          <div>5000-10000</div>
         </Table.Cell>
       </>
     );

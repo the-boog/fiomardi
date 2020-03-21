@@ -6,8 +6,8 @@ class BodyStyleFilter extends React.Component {
     return (
       <>
         <Table.Cell>
-          <div onClick={this.props.test}>Honda</div>
-          <div>Toyota</div>
+          <div onClick={this.props.test}>Sedan</div>
+          <div>SUV</div>
         </Table.Cell>
       </>
     );
