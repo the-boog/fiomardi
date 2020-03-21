@@ -16,3 +16,6 @@ const App = () => (
 );
 
 export default App;
+
+//TODO create provider for English/Spanish
+//TODO create auth for administrator

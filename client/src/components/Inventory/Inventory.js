@@ -1,11 +1,13 @@
 import React from "react";
-import { Table, Icon } from "semantic-ui-react";
+import { Table, Icon, Dropdown, Card } from "semantic-ui-react";
 import MakeFilter from "./Filters/MakeFilter";
 import BodyStyleFilter from "./Filters/BodyStyleFilter";
 import ColorFilter from "./Filters/ColorFilter";
 import ModelFilter from "./Filters/ModelFilter";
 import ModelYearFilter from "./Filters/ModelYearFilter";
 import PriceFilter from "./Filters/PriceFilter";
+import MileageFilter from "./Filters/MileageFilter";
+import Car from "./Car";
 
 class Inventory extends React.Component {
   state = {
@@ -14,7 +16,8 @@ class Inventory extends React.Component {
     activeBodyStyle: false,
     activeColor: false,
     activeModelYear: false,
-    activePrice: false
+    activePrice: false,
+    activeMileage: false
   };
 
   handleClick = input => {
@@ -38,10 +41,51 @@ class Inventory extends React.Component {
       case "activePrice":
         this.setState({ activePrice: !this.state.activePrice });
         break;
+      case "activeMileage":
+        this.setState({ activeMileage: !this.state.activeMileage });
+        break;
     }
   };
 
   render() {
+    const sortOptions = [
+      {
+        key: "Make Ascending",
+        text: "Make Ascending",
+        value: "Make Ascending"
+      },
+      {
+        key: "Price Low",
+        text: "Price Low",
+        value: "Price Low"
+      },
+      {
+        key: "Price High",
+        text: "Price High",
+        value: "Price High"
+      },
+      {
+        key: "Mileage Low",
+        text: "Mileage Low",
+        value: "Mileage Low"
+      },
+      {
+        key: "Mileage High",
+        text: "Mileage High",
+        value: "Mileage High"
+      },
+      {
+        key: "Year Ascending",
+        text: "Year Ascending",
+        value: "Year Ascending"
+      },
+      {
+        key: "Year Descending",
+        text: "Year Descending",
+        value: "Year Descending"
+      }
+    ];
+
     return (
       <>
         <Table>
@@ -51,7 +95,12 @@ class Inventory extends React.Component {
                 Clear Filter
               </Table.Cell>
               <Table.Cell style={{ borderBottom: "1px solid" }}>
-                Sort By
+                <Dropdown
+                  placeholder="Sort By"
+                  fluid
+                  selection
+                  options={sortOptions}
+                />
               </Table.Cell>
               <Table.Cell style={{ borderBottom: "1px solid" }}>
                 Listings Per Page
@@ -64,10 +113,12 @@ class Inventory extends React.Component {
           style={{
             display: "flex",
             justifyContent: "flex-start",
-            marginRight: "50px"
+            alignItems: "flex-start",
+            marginRight: "50px",
+            marginLeft: "5px"
           }}
         >
-          <Table style={{ width: "29.5%", height: "100%" }}>
+          <Table style={{ width: "29.5%", margin: "0px" }}>
             <Table.Body>
               <Table.Row>
                 <Table.Cell
@@ -151,17 +202,39 @@ class Inventory extends React.Component {
               <Table.Row>
                 {this.state.activePrice === true ? <PriceFilter /> : null}
               </Table.Row>
+              <Table.Row>
+                <Table.Cell
+                  selectable
+                  style={{ backgroundColor: "#b5b5b5" }}
+                  onClick={() => this.handleClick("activeMileage")}
+                >
+                  Milage
+                  <Icon name="dropdown" />
+                </Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                {this.state.activeMileage === true ? <MileageFilter /> : null}
+              </Table.Row>
             </Table.Body>
           </Table>
-          <Table style={{ width: "70%", height: "100%" }}>
+          <div style={{ width: "1%" }} />
+          <Table style={{ width: "70%", margin: "0px" }}>
             <Table.Body>
-              {/* <Table.Row>2</Table.Row>
-              <Table.Row>2</Table.Row>
-              <Table.Row>2</Table.Row>
-              <Table.Row>2</Table.Row>
-              <Table.Row>2</Table.Row>
-              <Table.Row>2</Table.Row>
-              <Table.Row>2</Table.Row> */}
+              <Table.Row style={{ height: "200px" }}>
+                <Table.Cell>
+                  <Car />
+                </Table.Cell>
+              </Table.Row>
+              <Table.Row style={{ height: "200px" }}>
+                <Table.Cell>
+                  <Car />
+                </Table.Cell>
+              </Table.Row>
+              <Table.Row style={{ height: "200px" }}>
+                <Table.Cell>
+                  <Car />
+                </Table.Cell>
+              </Table.Row>
             </Table.Body>
           </Table>
         </div>
