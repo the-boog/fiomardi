@@ -10,8 +10,10 @@ const App = () => (
   <Fragment>
     <Logo />
     <Navbar />
-    <Route exact path="/" component={Home} />
-    <Route exact path="/inventory" component={Inventory} />
+    <div style={{ margin: "20px" }}>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/inventory" component={Inventory} />
+    </div>
   </Fragment>
 );
 

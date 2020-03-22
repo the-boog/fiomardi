@@ -1,13 +1,13 @@
 import React from "react";
-import { Table } from "semantic-ui-react";
+import { Table, Checkbox } from "semantic-ui-react";
 
 class MileageFilter extends React.Component {
   render() {
     return (
       <>
-        <Table.Cell>
-          <div onClick={this.props.test}>0-10,000</div>
-          <div>40,000 - 50,000</div>
+        <Table.Cell style={{ display: "flex", flexDirection: "column" }}>
+          <Checkbox label="0-10,000" style={{ padding: "5px" }} />
+          <Checkbox label="10,000-20,000" style={{ padding: "5px" }} />
         </Table.Cell>
       </>
     );

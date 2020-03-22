@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Icon, Dropdown, Card } from "semantic-ui-react";
+import { Table, Icon, Dropdown, Button } from "semantic-ui-react";
 import MakeFilter from "./Filters/MakeFilter";
 import BodyStyleFilter from "./Filters/BodyStyleFilter";
 import ColorFilter from "./Filters/ColorFilter";
@@ -7,7 +7,7 @@ import ModelFilter from "./Filters/ModelFilter";
 import ModelYearFilter from "./Filters/ModelYearFilter";
 import PriceFilter from "./Filters/PriceFilter";
 import MileageFilter from "./Filters/MileageFilter";
-import Car from "./Car";
+import CarCard from "./CarCard";
 
 class Inventory extends React.Component {
   state = {
@@ -91,10 +91,30 @@ class Inventory extends React.Component {
         <Table>
           <Table.Header>
             <Table.Row>
-              <Table.Cell style={{ backgroundColor: "#b5b5b5" }}>
-                Clear Filter
+              <Table.Cell
+                style={{
+                  width: "25%",
+                  borderBottom: "1px solid"
+                }}
+              >
+                <Button
+                  style={{
+                    width: "100%",
+                    fontSize: "1.1em",
+                    fontFamily: "verdana",
+                    backgroundColor: "#575757",
+                    color: "white"
+                  }}
+                >
+                  Clear Filters
+                </Button>
               </Table.Cell>
-              <Table.Cell style={{ borderBottom: "1px solid" }}>
+              <Table.Cell
+                style={{
+                  borderBottom: "1px solid",
+                  width: "25%"
+                }}
+              >
                 <Dropdown
                   placeholder="Sort By"
                   fluid
@@ -102,10 +122,18 @@ class Inventory extends React.Component {
                   options={sortOptions}
                 />
               </Table.Cell>
-              <Table.Cell style={{ borderBottom: "1px solid" }}>
+              <Table.Cell
+                style={{
+                  borderBottom: "1px solid",
+
+                  width: "25%"
+                }}
+              >
                 Listings Per Page
               </Table.Cell>
-              <Table.Cell style={{ borderBottom: "1px solid" }}></Table.Cell>
+              <Table.Cell
+                style={{ borderBottom: "1px solid", width: "25%" }}
+              ></Table.Cell>
             </Table.Row>
           </Table.Header>
         </Table>
@@ -113,17 +141,20 @@ class Inventory extends React.Component {
           style={{
             display: "flex",
             justifyContent: "flex-start",
-            alignItems: "flex-start",
-            marginRight: "50px",
-            marginLeft: "5px"
+            alignItems: "flex-start"
           }}
         >
-          <Table style={{ width: "29.5%", margin: "0px" }}>
+          <Table style={{ width: "25%", margin: "0px" }}>
             <Table.Body>
               <Table.Row>
                 <Table.Cell
                   selectable
-                  style={{ backgroundColor: "#b5b5b5" }}
+                  style={{
+                    backgroundColor: "#001f52",
+                    height: "50px",
+                    color: "white",
+                    fontSize: "1.2em"
+                  }}
                   onClick={() => this.handleClick("activeMake")}
                 >
                   Make
@@ -136,7 +167,12 @@ class Inventory extends React.Component {
               <Table.Row>
                 <Table.Cell
                   selectable
-                  style={{ backgroundColor: "#b5b5b5" }}
+                  style={{
+                    backgroundColor: "#001f52",
+                    height: "50px",
+                    color: "white",
+                    fontSize: "1.2em"
+                  }}
                   onClick={() => this.handleClick("activeModel")}
                 >
                   Model
@@ -149,7 +185,12 @@ class Inventory extends React.Component {
               <Table.Row>
                 <Table.Cell
                   selectable
-                  style={{ backgroundColor: "#b5b5b5" }}
+                  style={{
+                    backgroundColor: "#001f52",
+                    height: "50px",
+                    color: "white",
+                    fontSize: "1.2em"
+                  }}
                   onClick={() => this.handleClick("activeBodyStyle")}
                 >
                   Body Style
@@ -164,7 +205,12 @@ class Inventory extends React.Component {
               <Table.Row>
                 <Table.Cell
                   selectable
-                  style={{ backgroundColor: "#b5b5b5" }}
+                  style={{
+                    backgroundColor: "#001f52",
+                    height: "50px",
+                    color: "white",
+                    fontSize: "1.2em"
+                  }}
                   onClick={() => this.handleClick("activeColor")}
                 >
                   Color
@@ -177,7 +223,12 @@ class Inventory extends React.Component {
               <Table.Row>
                 <Table.Cell
                   selectable
-                  style={{ backgroundColor: "#b5b5b5" }}
+                  style={{
+                    backgroundColor: "#001f52",
+                    height: "50px",
+                    color: "white",
+                    fontSize: "1.2em"
+                  }}
                   onClick={() => this.handleClick("activeModelYear")}
                 >
                   Model Year
@@ -192,7 +243,12 @@ class Inventory extends React.Component {
               <Table.Row>
                 <Table.Cell
                   selectable
-                  style={{ backgroundColor: "#b5b5b5" }}
+                  style={{
+                    backgroundColor: "#001f52",
+                    height: "50px",
+                    color: "white",
+                    fontSize: "1.2em"
+                  }}
                   onClick={() => this.handleClick("activePrice")}
                 >
                   Price
@@ -205,7 +261,12 @@ class Inventory extends React.Component {
               <Table.Row>
                 <Table.Cell
                   selectable
-                  style={{ backgroundColor: "#b5b5b5" }}
+                  style={{
+                    backgroundColor: "#001f52",
+                    height: "50px",
+                    color: "white",
+                    fontSize: "1.2em"
+                  }}
                   onClick={() => this.handleClick("activeMileage")}
                 >
                   Milage
@@ -215,24 +276,33 @@ class Inventory extends React.Component {
               <Table.Row>
                 {this.state.activeMileage === true ? <MileageFilter /> : null}
               </Table.Row>
+              <Table.Row>
+                <Table.Cell
+                  style={{
+                    backgroundColor: "#001f52",
+                    height: "400px",
+                    color: "white",
+                    fontSize: "1.2em"
+                  }}
+                ></Table.Cell>
+              </Table.Row>
             </Table.Body>
           </Table>
-          <div style={{ width: "1%" }} />
-          <Table style={{ width: "70%", margin: "0px" }}>
+          <Table style={{ width: "75%", margin: "0px" }}>
             <Table.Body>
               <Table.Row style={{ height: "200px" }}>
                 <Table.Cell>
-                  <Car />
+                  <CarCard />
                 </Table.Cell>
               </Table.Row>
               <Table.Row style={{ height: "200px" }}>
                 <Table.Cell>
-                  <Car />
+                  <CarCard />
                 </Table.Cell>
               </Table.Row>
               <Table.Row style={{ height: "200px" }}>
                 <Table.Cell>
-                  <Car />
+                  <CarCard />
                 </Table.Cell>
               </Table.Row>
             </Table.Body>

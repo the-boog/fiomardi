@@ -1,13 +1,13 @@
 import React from "react";
-import { Table } from "semantic-ui-react";
+import { Table, Checkbox } from "semantic-ui-react";
 
 class MakeFilter extends React.Component {
   render() {
     return (
       <>
-        <Table.Cell>
-          <div onClick={this.props.test}>Camry</div>
-          <div>Fit</div>
+        <Table.Cell style={{ display: "flex", flexDirection: "column" }}>
+          <Checkbox label="Fit" style={{ padding: "5px" }} />
+          <Checkbox label="Camry" style={{ padding: "5px" }} />
         </Table.Cell>
       </>
     );
