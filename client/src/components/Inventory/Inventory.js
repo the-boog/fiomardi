@@ -19,7 +19,7 @@ class Inventory extends React.Component {
     activeModelYear: false,
     activePrice: false,
     activeMileage: false,
-    cars: {}
+    cars: []
   };
 
   componentDidMount() {
@@ -302,21 +302,14 @@ class Inventory extends React.Component {
           </Table>
           <Table style={{ width: "75%", margin: "0px" }}>
             <Table.Body>
-              <Table.Row style={{ height: "200px" }}>
+              {this.state.cars.map( c => (
+                <Table.Row  key={c.id} style={{ height: "200px" }}>
                 <Table.Cell>
-                  <CarCard />
+                  <CarCard cars={c} />
                 </Table.Cell>
               </Table.Row>
-              <Table.Row style={{ height: "200px" }}>
-                <Table.Cell>
-                  <CarCard />
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row style={{ height: "200px" }}>
-                <Table.Cell>
-                  <CarCard />
-                </Table.Cell>
-              </Table.Row>
+              )
+                )}
             </Table.Body>
           </Table>
         </div>

@@ -1,8 +1,11 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import { Card, Icon, Image, Button } from "semantic-ui-react";
 
 class CarCard extends React.Component {
   render() {
+    const cars = this.props.cars
+    console.log(this.props.cars)
     return (
       <>
         <Card
@@ -22,7 +25,7 @@ class CarCard extends React.Component {
             style={{ height: "170px", width: "250px" }}
           />
           <Card.Content>
-            <Card.Header>2013 Honda Fit</Card.Header>
+            <Card.Header>{cars.make + " " + cars.kind}</Card.Header>
             <div
               style={{
                 display: "flex",
@@ -36,10 +39,10 @@ class CarCard extends React.Component {
                 <Icon name="tachometer alternate"></Icon> Mileage - 20,000
               </Card.Description>
               <Card.Description style={{ marginRight: "20px" }}>
-                <Icon name="tint"></Icon> Color - Black
+                <Icon name="tint"></Icon> {cars.color}
               </Card.Description>
               <Card.Description style={{ marginRight: "20px" }}>
-                <Icon name="car"></Icon> Body - Sedan
+                <Icon name="car"></Icon> {cars.make}
               </Card.Description>
               <Card.Description style={{ marginRight: "20px" }}>
                 <Icon name="info circle"></Icon> DriveTrain - FWD
@@ -52,13 +55,15 @@ class CarCard extends React.Component {
               <Button inverted color="green" floated="right">
                 Apply Now
               </Button>
-              <Button inverted color="orange" floated="right">
-                View Details
-              </Button>
+              <Link to={`/inventory/${cars.id}`}>
+                <Button inverted color="orange" floated="right">
+                  View Details
+                </Button>
+              </Link>
             </div>
           </Card.Content>
           <Card.Content extra style={{ marginRight: "20px" }}>
-            <Icon name="dollar">20,000</Icon>
+            <Icon name="dollar">{cars.price}</Icon>
           </Card.Content>
         </Card>
       </>
