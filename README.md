@@ -5,6 +5,13 @@ application up and running.
 
 Things you may want to cover:
 
+* Current Website
+https://www.fiomardicardealership.com/
+
+* Model After
+actionautoutah.com/used-cars
+honda.com
+
 * Ruby version
 
 * System dependencies
