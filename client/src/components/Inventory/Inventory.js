@@ -8,6 +8,7 @@ import ModelYearFilter from "./Filters/ModelYearFilter";
 import PriceFilter from "./Filters/PriceFilter";
 import MileageFilter from "./Filters/MileageFilter";
 import CarCard from "./CarCard";
+import axios from "axios";
 
 class Inventory extends React.Component {
   state = {
@@ -17,8 +18,19 @@ class Inventory extends React.Component {
     activeColor: false,
     activeModelYear: false,
     activePrice: false,
-    activeMileage: false
+    activeMileage: false,
+    cars: {}
   };
+
+  componentDidMount() {
+    axios.get("/api/cars")
+      .then( res => {
+        this.setState({ cars: res.data, });
+      })
+      .catch( err => {
+        console.log(err);
+      })
+    }
 
   handleClick = input => {
     console.log(!this.state.activeMake);
