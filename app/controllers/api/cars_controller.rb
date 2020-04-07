@@ -40,15 +40,3 @@ class Api::CarsController < ApplicationController
     end
   
   end
-
-
-
-
-
-
-
-
-
-
-
-end
