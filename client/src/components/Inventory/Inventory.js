@@ -19,20 +19,21 @@ class Inventory extends React.Component {
     activeModelYear: false,
     activePrice: false,
     activeMileage: false,
-    cars: []
+    cars: [],
   };
 
   componentDidMount() {
-    axios.get("/api/cars")
-      .then( res => {
-        this.setState({ cars: res.data, });
+    axios
+      .get("/api/cars")
+      .then((res) => {
+        this.setState({ cars: res.data });
       })
-      .catch( err => {
+      .catch((err) => {
         console.log(err);
-      })
-    }
+      });
+  }
 
-  handleClick = input => {
+  handleClick = (input) => {
     console.log(!this.state.activeMake);
     switch (input) {
       case "activeMake":
@@ -64,38 +65,38 @@ class Inventory extends React.Component {
       {
         key: "Make Ascending",
         text: "Make Ascending",
-        value: "Make Ascending"
+        value: "Make Ascending",
       },
       {
         key: "Price Low",
         text: "Price Low",
-        value: "Price Low"
+        value: "Price Low",
       },
       {
         key: "Price High",
         text: "Price High",
-        value: "Price High"
+        value: "Price High",
       },
       {
         key: "Mileage Low",
         text: "Mileage Low",
-        value: "Mileage Low"
+        value: "Mileage Low",
       },
       {
         key: "Mileage High",
         text: "Mileage High",
-        value: "Mileage High"
+        value: "Mileage High",
       },
       {
         key: "Year Ascending",
         text: "Year Ascending",
-        value: "Year Ascending"
+        value: "Year Ascending",
       },
       {
         key: "Year Descending",
         text: "Year Descending",
-        value: "Year Descending"
-      }
+        value: "Year Descending",
+      },
     ];
 
     return (
@@ -106,7 +107,7 @@ class Inventory extends React.Component {
               <Table.Cell
                 style={{
                   width: "25%",
-                  borderBottom: "1px solid"
+                  borderBottom: "1px solid",
                 }}
               >
                 <Button
@@ -115,7 +116,7 @@ class Inventory extends React.Component {
                     fontSize: "1.1em",
                     fontFamily: "verdana",
                     backgroundColor: "#575757",
-                    color: "white"
+                    color: "white",
                   }}
                 >
                   Clear Filters
@@ -124,7 +125,7 @@ class Inventory extends React.Component {
               <Table.Cell
                 style={{
                   borderBottom: "1px solid",
-                  width: "25%"
+                  width: "25%",
                 }}
               >
                 <Dropdown
@@ -138,14 +139,22 @@ class Inventory extends React.Component {
                 style={{
                   borderBottom: "1px solid",
 
-                  width: "25%"
+                  width: "25%",
                 }}
               >
                 Listings Per Page
               </Table.Cell>
               <Table.Cell
-                style={{ borderBottom: "1px solid", width: "25%" }}
-              ></Table.Cell>
+                style={{
+                  borderBottom: "1px solid",
+                  width: "25%",
+                  textAlign: "right",
+                }}
+              >
+                <Button color="green" inverted>
+                  Create New Car
+                </Button>
+              </Table.Cell>
             </Table.Row>
           </Table.Header>
         </Table>
@@ -153,7 +162,7 @@ class Inventory extends React.Component {
           style={{
             display: "flex",
             justifyContent: "flex-start",
-            alignItems: "flex-start"
+            alignItems: "flex-start",
           }}
         >
           <Table style={{ width: "25%", margin: "0px" }}>
@@ -165,7 +174,7 @@ class Inventory extends React.Component {
                     backgroundColor: "#001f52",
                     height: "50px",
                     color: "white",
-                    fontSize: "1.2em"
+                    fontSize: "1.2em",
                   }}
                   onClick={() => this.handleClick("activeMake")}
                 >
@@ -183,7 +192,7 @@ class Inventory extends React.Component {
                     backgroundColor: "#001f52",
                     height: "50px",
                     color: "white",
-                    fontSize: "1.2em"
+                    fontSize: "1.2em",
                   }}
                   onClick={() => this.handleClick("activeModel")}
                 >
@@ -201,7 +210,7 @@ class Inventory extends React.Component {
                     backgroundColor: "#001f52",
                     height: "50px",
                     color: "white",
-                    fontSize: "1.2em"
+                    fontSize: "1.2em",
                   }}
                   onClick={() => this.handleClick("activeBodyStyle")}
                 >
@@ -221,7 +230,7 @@ class Inventory extends React.Component {
                     backgroundColor: "#001f52",
                     height: "50px",
                     color: "white",
-                    fontSize: "1.2em"
+                    fontSize: "1.2em",
                   }}
                   onClick={() => this.handleClick("activeColor")}
                 >
@@ -239,7 +248,7 @@ class Inventory extends React.Component {
                     backgroundColor: "#001f52",
                     height: "50px",
                     color: "white",
-                    fontSize: "1.2em"
+                    fontSize: "1.2em",
                   }}
                   onClick={() => this.handleClick("activeModelYear")}
                 >
@@ -259,7 +268,7 @@ class Inventory extends React.Component {
                     backgroundColor: "#001f52",
                     height: "50px",
                     color: "white",
-                    fontSize: "1.2em"
+                    fontSize: "1.2em",
                   }}
                   onClick={() => this.handleClick("activePrice")}
                 >
@@ -277,7 +286,7 @@ class Inventory extends React.Component {
                     backgroundColor: "#001f52",
                     height: "50px",
                     color: "white",
-                    fontSize: "1.2em"
+                    fontSize: "1.2em",
                   }}
                   onClick={() => this.handleClick("activeMileage")}
                 >
@@ -294,7 +303,7 @@ class Inventory extends React.Component {
                     backgroundColor: "#001f52",
                     height: "400px",
                     color: "white",
-                    fontSize: "1.2em"
+                    fontSize: "1.2em",
                   }}
                 ></Table.Cell>
               </Table.Row>
@@ -302,14 +311,13 @@ class Inventory extends React.Component {
           </Table>
           <Table style={{ width: "75%", margin: "0px" }}>
             <Table.Body>
-              {this.state.cars.map( c => (
-                <Table.Row  key={c.id} style={{ height: "200px" }}>
-                <Table.Cell>
-                  <CarCard cars={c} />
-                </Table.Cell>
-              </Table.Row>
-              )
-                )}
+              {this.state.cars.map((c) => (
+                <Table.Row key={c.id} style={{ height: "200px" }}>
+                  <Table.Cell>
+                    <CarCard cars={c} />
+                  </Table.Cell>
+                </Table.Row>
+              ))}
             </Table.Body>
           </Table>
         </div>
