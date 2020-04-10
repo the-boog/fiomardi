@@ -36,7 +36,7 @@ class CarCard extends React.Component {
               }}
             >
               <Card.Description style={{ marginRight: "20px" }}>
-                <Icon name="tachometer alternate"></Icon> Mileage - 20,000
+                <Icon name="tachometer alternate"></Icon> Miles - {cars.miles}
               </Card.Description>
               <Card.Description style={{ marginRight: "20px" }}>
                 <Icon name="tint"></Icon> {cars.color}
@@ -45,24 +45,43 @@ class CarCard extends React.Component {
                 <Icon name="car"></Icon> {cars.make}
               </Card.Description>
               <Card.Description style={{ marginRight: "20px" }}>
-                <Icon name="info circle"></Icon> DriveTrain - FWD
+                <Icon name="info circle"></Icon> DriveTrain - {cars.drivetrain}
               </Card.Description>
               <Card.Description style={{ marginRight: "20px" }}>
-                <Icon name="sort amount up"></Icon> Transmission - Automatic
+                <Icon name="sort amount up"></Icon> Transmission -{" "}
+                {cars.transmission}
               </Card.Description>
             </div>
-            <div style={{ marginTop: "30px" }}>
-              <Button inverted color="green" floated="right">
-                Apply Now
-              </Button>
-              <Link to={`/inventory/${cars.id}`}>
-                <Button inverted color="orange" floated="right">
-                  View Details
+            <div
+              style={{
+                marginTop: "30px",
+              }}
+            >
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                <Button inverted color="green" floated="right">
+                  Apply Now
                 </Button>
-              </Link>
+                <Link to={`/inventory/${cars.id}`}>
+                  <Button inverted color="orange" floated="right">
+                    View Details
+                  </Button>
+                </Link>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  paddingTop: "6px",
+                }}
+              >
+                <Button color="blue" floated="right">
+                  Edit
+                </Button>
+                <Button color="red" floated="right">
+                  Delete
+                </Button>
+              </div>
             </div>
-            <Button>Edit</Button>
-            <Button>Delete</Button>
           </Card.Content>
           <Card.Content extra style={{ marginRight: "20px" }}>
             <Icon name="dollar">{cars.price}</Icon>
