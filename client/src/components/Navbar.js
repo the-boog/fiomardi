@@ -8,7 +8,7 @@ class Navbar extends React.Component {
     scheduleTestDrive: false,
     financing: false,
     specials: false,
-    contact: false
+    contact: false,
   };
 
   handleHover = () => {};
@@ -16,21 +16,23 @@ class Navbar extends React.Component {
   render() {
     return (
       <>
-        <Menu style={{ backgroundColor: "#001f52" }}>
-          <Menu.Item style={{ color: "white" }}>Home</Menu.Item>
-          <Menu.Item active style={{ color: "white" }}>
-            Inventory
-          </Menu.Item>
-          <Menu.Item style={{ color: "white" }}>Financing</Menu.Item>
-          <Menu.Item style={{ color: "white" }}>Specials</Menu.Item>
-          <Menu.Item style={{ color: "white" }}>
-            Schedule A Test Drive
-          </Menu.Item>
-          <Menu.Item style={{ color: "white" }}>Contact</Menu.Item>
-          <Menu.Item>
-            <Input className="icon" icon="search" placeholder="Search..." />
-          </Menu.Item>
-        </Menu>
+        <div style={{ paddingLeft: "20px", paddingRight: "20px" }}>
+          <Menu style={{ backgroundColor: "#001f52" }}>
+            <Menu.Item style={{ color: "white" }}>Home</Menu.Item>
+            <Menu.Item active style={{ color: "white" }}>
+              Inventory
+            </Menu.Item>
+            <Menu.Item style={{ color: "white" }}>Financing</Menu.Item>
+            <Menu.Item style={{ color: "white" }}>Specials</Menu.Item>
+            <Menu.Item style={{ color: "white" }}>
+              Schedule A Test Drive
+            </Menu.Item>
+            <Menu.Item style={{ color: "white" }}>Contact</Menu.Item>
+            <Menu.Item>
+              <Input className="icon" icon="search" placeholder="Search..." />
+            </Menu.Item>
+          </Menu>
+        </div>
       </>
     );
   }

@@ -1,24 +1,11 @@
 import React from "react";
-import { Table, Icon, Dropdown, Button } from "semantic-ui-react";
-import MakeFilter from "./Filters/MakeFilter";
-import BodyStyleFilter from "./Filters/BodyStyleFilter";
-import ColorFilter from "./Filters/ColorFilter";
-import ModelFilter from "./Filters/ModelFilter";
-import ModelYearFilter from "./Filters/ModelYearFilter";
-import PriceFilter from "./Filters/PriceFilter";
-import MileageFilter from "./Filters/MileageFilter";
+import { Table, Dropdown, Button } from "semantic-ui-react";
 import CarCard from "./CarCard";
 import axios from "axios";
+import Filter from "./Filters/Filter.js";
 
 class Inventory extends React.Component {
   state = {
-    activeMake: false,
-    activeModel: false,
-    activeBodyStyle: false,
-    activeColor: false,
-    activeModelYear: false,
-    activePrice: false,
-    activeMileage: false,
     cars: [],
   };
 
@@ -165,150 +152,7 @@ class Inventory extends React.Component {
             alignItems: "flex-start",
           }}
         >
-          <Table style={{ width: "25%", margin: "0px" }}>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell
-                  selectable
-                  style={{
-                    backgroundColor: "#001f52",
-                    height: "50px",
-                    color: "white",
-                    fontSize: "1.2em",
-                  }}
-                  onClick={() => this.handleClick("activeMake")}
-                >
-                  Make
-                  <Icon name="dropdown" />
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                {this.state.activeMake === true ? <MakeFilter /> : null}
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell
-                  selectable
-                  style={{
-                    backgroundColor: "#001f52",
-                    height: "50px",
-                    color: "white",
-                    fontSize: "1.2em",
-                  }}
-                  onClick={() => this.handleClick("activeModel")}
-                >
-                  Model
-                  <Icon name="dropdown" />
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                {this.state.activeModel === true ? <ModelFilter /> : null}
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell
-                  selectable
-                  style={{
-                    backgroundColor: "#001f52",
-                    height: "50px",
-                    color: "white",
-                    fontSize: "1.2em",
-                  }}
-                  onClick={() => this.handleClick("activeBodyStyle")}
-                >
-                  Body Style
-                  <Icon name="dropdown" />
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                {this.state.activeBodyStyle === true ? (
-                  <BodyStyleFilter />
-                ) : null}
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell
-                  selectable
-                  style={{
-                    backgroundColor: "#001f52",
-                    height: "50px",
-                    color: "white",
-                    fontSize: "1.2em",
-                  }}
-                  onClick={() => this.handleClick("activeColor")}
-                >
-                  Color
-                  <Icon name="dropdown" />
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                {this.state.activeColor === true ? <ColorFilter /> : null}
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell
-                  selectable
-                  style={{
-                    backgroundColor: "#001f52",
-                    height: "50px",
-                    color: "white",
-                    fontSize: "1.2em",
-                  }}
-                  onClick={() => this.handleClick("activeModelYear")}
-                >
-                  Model Year
-                  <Icon name="dropdown" />
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                {this.state.activeModelYear === true ? (
-                  <ModelYearFilter />
-                ) : null}
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell
-                  selectable
-                  style={{
-                    backgroundColor: "#001f52",
-                    height: "50px",
-                    color: "white",
-                    fontSize: "1.2em",
-                  }}
-                  onClick={() => this.handleClick("activePrice")}
-                >
-                  Price
-                  <Icon name="dropdown" />
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                {this.state.activePrice === true ? <PriceFilter /> : null}
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell
-                  selectable
-                  style={{
-                    backgroundColor: "#001f52",
-                    height: "50px",
-                    color: "white",
-                    fontSize: "1.2em",
-                  }}
-                  onClick={() => this.handleClick("activeMileage")}
-                >
-                  Milage
-                  <Icon name="dropdown" />
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                {this.state.activeMileage === true ? <MileageFilter /> : null}
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell
-                  style={{
-                    backgroundColor: "#001f52",
-                    height: "400px",
-                    color: "white",
-                    fontSize: "1.2em",
-                  }}
-                ></Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
+          <Filter />
           <Table style={{ width: "75%", margin: "0px" }}>
             <Table.Body>
               {this.state.cars.map((c) => (
