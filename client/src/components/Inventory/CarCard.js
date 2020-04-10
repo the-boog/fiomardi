@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { Card, Icon, Image, Button } from "semantic-ui-react";
 
 class CarCard extends React.Component {
   render() {
-    const cars = this.props.cars
-    console.log(this.props.cars)
+    const cars = this.props.cars;
+    console.log(this.props.cars);
     return (
       <>
         <Card
@@ -15,7 +15,7 @@ class CarCard extends React.Component {
             display: "flex",
             flexDirection: "row",
             borderTop: "solid 1.5px",
-            borderBottom: "solid 1.5px"
+            borderBottom: "solid 1.5px",
           }}
         >
           <Image
@@ -32,7 +32,7 @@ class CarCard extends React.Component {
                 flexDirection: "row",
                 flexWrap: "wrap",
                 padding: "5px",
-                justifyContent: "space-between"
+                justifyContent: "space-between",
               }}
             >
               <Card.Description style={{ marginRight: "20px" }}>
@@ -61,6 +61,8 @@ class CarCard extends React.Component {
                 </Button>
               </Link>
             </div>
+            <Button>Edit</Button>
+            <Button>Delete</Button>
           </Card.Content>
           <Card.Content extra style={{ marginRight: "20px" }}>
             <Icon name="dollar">{cars.price}</Icon>
