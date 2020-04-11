@@ -1,17 +1,27 @@
 import React from "react";
 import { Table, Checkbox } from "semantic-ui-react";
 
-class MakeFilter extends React.Component {
+class ModelFilter extends React.Component {
   render() {
+    const cars = this.props.cars;
+    const modelOptions = [...new Set(cars.map((car) => car.kind))];
     return (
       <>
         <Table.Cell style={{ display: "flex", flexDirection: "column" }}>
-          <Checkbox label="Fit" style={{ padding: "5px" }} />
-          <Checkbox label="Camry" style={{ padding: "5px" }} />
+          {modelOptions.map((value, index) => {
+            return (
+              <Checkbox
+                key={index}
+                label={value}
+                onClick={() => this.props.filterOptions(value)}
+                style={{ padding: "5px" }}
+              />
+            );
+          })}
         </Table.Cell>
       </>
     );
   }
 }
 
-export default MakeFilter;
+export default ModelFilter;

@@ -20,31 +20,8 @@ class Inventory extends React.Component {
       });
   }
 
-  handleClick = (input) => {
-    console.log(!this.state.activeMake);
-    switch (input) {
-      case "activeMake":
-        this.setState({ activeMake: !this.state.activeMake });
-        break;
-      case "activeModel":
-        this.setState({ activeModel: !this.state.activeModel });
-        break;
-      case "activeBodyStyle":
-        this.setState({ activeBodyStyle: !this.state.activeBodyStyle });
-        break;
-      case "activeColor":
-        this.setState({ activeColor: !this.state.activeColor });
-        break;
-      case "activeModelYear":
-        this.setState({ activeModelYear: !this.state.activeModelYear });
-        break;
-      case "activePrice":
-        this.setState({ activePrice: !this.state.activePrice });
-        break;
-      case "activeMileage":
-        this.setState({ activeMileage: !this.state.activeMileage });
-        break;
-    }
+  filterOptions = (option) => {
+    console.log(option);
   };
 
   render() {
@@ -86,6 +63,7 @@ class Inventory extends React.Component {
       },
     ];
 
+    const cars = this.state.cars;
     return (
       <>
         <Table>
@@ -152,10 +130,10 @@ class Inventory extends React.Component {
             alignItems: "flex-start",
           }}
         >
-          <Filter />
+          <Filter cars={cars} filterOptions={this.filterOptions} />
           <Table style={{ width: "75%", margin: "0px" }}>
             <Table.Body>
-              {this.state.cars.map((c) => (
+              {cars.map((c) => (
                 <Table.Row key={c.id} style={{ height: "200px" }}>
                   <Table.Cell>
                     <CarCard cars={c} />

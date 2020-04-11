@@ -1,14 +1,16 @@
 import React from "react";
 import { Table, Checkbox } from "semantic-ui-react";
 
-class PriceFilter extends React.Component {
+class TransmissionFilter extends React.Component {
   render() {
     const cars = this.props.cars;
-    const priceOptions = [...new Set(cars.map((car) => car.price))];
+    const transmissionOptions = [
+      ...new Set(cars.map((car) => car.transmission)),
+    ];
     return (
       <>
         <Table.Cell style={{ display: "flex", flexDirection: "column" }}>
-          {priceOptions.map((value, index) => {
+          {transmissionOptions.map((value, index) => {
             return (
               <Checkbox
                 key={index}
@@ -24,4 +26,4 @@ class PriceFilter extends React.Component {
   }
 }
 
-export default PriceFilter;
+export default TransmissionFilter;

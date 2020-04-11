@@ -7,20 +7,23 @@ import ModelFilter from "./ModelFilter";
 import ModelYearFilter from "./ModelYearFilter";
 import PriceFilter from "./PriceFilter";
 import MileageFilter from "./MileageFilter";
+import DrivetrainFilter from "./DrivetrainFilter";
+import TransmissionFilter from "./TransmissionFilter";
 
 class Filter extends React.Component {
   state = {
-    activeMake: false,
-    activeModel: false,
     activeBodyStyle: false,
     activeColor: false,
+    activeMake: false,
+    activeMiles: false,
+    activeModel: false,
     activeModelYear: false,
     activePrice: false,
-    activeMileage: false,
+    activeDriveTrain: false,
+    activeTransmission: false,
   };
 
   handleClick = (input) => {
-    console.log(!this.state.activeMake);
     switch (input) {
       case "activeMake":
         this.setState({ activeMake: !this.state.activeMake });
@@ -40,13 +43,30 @@ class Filter extends React.Component {
       case "activePrice":
         this.setState({ activePrice: !this.state.activePrice });
         break;
-      case "activeMileage":
-        this.setState({ activeMileage: !this.state.activeMileage });
+      case "activeMiles":
+        this.setState({ activeMiles: !this.state.activeMiles });
+        break;
+      case "activeTransmission":
+        this.setState({ activeTransmission: !this.state.activeTransmission });
+        break;
+      case "activeDrivetrain":
+        this.setState({ activeDrivetrain: !this.state.activeDrivetrain });
         break;
     }
   };
 
   render() {
+    const cars = this.props.cars;
+    const activeBodyStyle = this.state.activeBodyStyle;
+    const activeColor = this.state.activeColor;
+    const activeMake = this.state.activeMake;
+    const activeMiles = this.state.activeMiles;
+    const activeModel = this.state.activeModel;
+    const activeModelYear = this.state.activeModelYear;
+    const activePrice = this.state.activePrice;
+    const activeDrivetrain = this.state.activeDrivetrain;
+    const activeTransmission = this.state.activeTransmission;
+    const filterOptions = this.props.filterOptions;
     return (
       <>
         <Table style={{ width: "25%", margin: "0px" }}>
@@ -67,7 +87,9 @@ class Filter extends React.Component {
               </Table.Cell>
             </Table.Row>
             <Table.Row>
-              {this.state.activeMake === true ? <MakeFilter /> : null}
+              {activeMake === true ? (
+                <MakeFilter cars={cars} filterOptions={filterOptions} />
+              ) : null}
             </Table.Row>
             <Table.Row>
               <Table.Cell
@@ -85,7 +107,9 @@ class Filter extends React.Component {
               </Table.Cell>
             </Table.Row>
             <Table.Row>
-              {this.state.activeModel === true ? <ModelFilter /> : null}
+              {activeModel === true ? (
+                <ModelFilter cars={cars} filterOptions={filterOptions} />
+              ) : null}
             </Table.Row>
             <Table.Row>
               <Table.Cell
@@ -103,7 +127,9 @@ class Filter extends React.Component {
               </Table.Cell>
             </Table.Row>
             <Table.Row>
-              {this.state.activeBodyStyle === true ? <BodyStyleFilter /> : null}
+              {activeBodyStyle === true ? (
+                <BodyStyleFilter cars={cars} filterOptions={filterOptions} />
+              ) : null}
             </Table.Row>
             <Table.Row>
               <Table.Cell
@@ -121,7 +147,9 @@ class Filter extends React.Component {
               </Table.Cell>
             </Table.Row>
             <Table.Row>
-              {this.state.activeColor === true ? <ColorFilter /> : null}
+              {activeColor === true ? (
+                <ColorFilter cars={cars} filterOptions={filterOptions} />
+              ) : null}
             </Table.Row>
             <Table.Row>
               <Table.Cell
@@ -139,7 +167,9 @@ class Filter extends React.Component {
               </Table.Cell>
             </Table.Row>
             <Table.Row>
-              {this.state.activeModelYear === true ? <ModelYearFilter /> : null}
+              {activeModelYear === true ? (
+                <ModelYearFilter cars={cars} filterOptions={filterOptions} />
+              ) : null}
             </Table.Row>
             <Table.Row>
               <Table.Cell
@@ -157,7 +187,9 @@ class Filter extends React.Component {
               </Table.Cell>
             </Table.Row>
             <Table.Row>
-              {this.state.activePrice === true ? <PriceFilter /> : null}
+              {activePrice === true ? (
+                <PriceFilter cars={cars} filterOptions={filterOptions} />
+              ) : null}
             </Table.Row>
             <Table.Row>
               <Table.Cell
@@ -168,14 +200,54 @@ class Filter extends React.Component {
                   color: "white",
                   fontSize: "1.2em",
                 }}
-                onClick={() => this.handleClick("activeMileage")}
+                onClick={() => this.handleClick("activeMiles")}
               >
                 Milage
                 <Icon name="dropdown" />
               </Table.Cell>
             </Table.Row>
             <Table.Row>
-              {this.state.activeMileage === true ? <MileageFilter /> : null}
+              {activeMiles === true ? <MileageFilter cars={cars} /> : null}
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell
+                selectable
+                style={{
+                  backgroundColor: "#001f52",
+                  height: "50px",
+                  color: "white",
+                  fontSize: "1.2em",
+                }}
+                onClick={() => this.handleClick("activeDrivetrain")}
+              >
+                DriveTrain
+                <Icon name="dropdown" />
+              </Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              {activeDrivetrain === true ? (
+                <DrivetrainFilter cars={cars} filterOptions={filterOptions} />
+              ) : null}
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell
+                selectable
+                style={{
+                  backgroundColor: "#001f52",
+                  height: "50px",
+                  color: "white",
+                  fontSize: "1.2em",
+                }}
+                onClick={() => this.handleClick("activeTransmission")}
+              >
+                Transmission
+                <Icon name="dropdown" />
+              </Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              {activeTransmission === true ? (
+                <TransmissionFilter cars={cars} filterOptions={filterOptions} />
+              ) : null}
             </Table.Row>
             <Table.Row>
               <Table.Cell
