@@ -5,7 +5,6 @@ import { Card, Icon, Image, Button } from "semantic-ui-react";
 class CarCard extends React.Component {
   render() {
     const cars = this.props.cars;
-    console.log(this.props.cars);
     return (
       <>
         <Card

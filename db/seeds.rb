@@ -13,6 +13,8 @@ display=[true, false]
     transmission: Faker::Vehicle.transmission,
     miles: Faker::Vehicle.mileage(min: 50_000, max: 250_000),
     drivetrain: Faker::Vehicle.drive_type,
+    modelyear: rand(2001..2020).to_s,
+    body: Faker::Vehicle.car_type,
     
   )
 end
