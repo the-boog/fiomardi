@@ -1,6 +1,6 @@
 import React from "react";
 import { Table, Dropdown, Button } from "semantic-ui-react";
-import CarCard from "./CarCard";
+import CarCard from "./Cars/CarCard";
 import axios from "axios";
 import Filter from "./Filters/Filter.js";
 
