@@ -3,6 +3,7 @@ import { Table, Dropdown, Button } from "semantic-ui-react";
 import CarCard from "./Cars/CarCard";
 import axios from "axios";
 import Filter from "./Filters/Filter.js";
+import NewCarModal from "./NewCarModal.js";
 
 class Inventory extends React.Component {
   state = {
@@ -116,9 +117,7 @@ class Inventory extends React.Component {
                   textAlign: "right",
                 }}
               >
-                <Button color="green" inverted>
-                  Create New Car
-                </Button>
+                <NewCarModal />
               </Table.Cell>
             </Table.Row>
           </Table.Header>
