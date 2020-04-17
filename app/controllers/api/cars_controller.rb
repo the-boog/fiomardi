@@ -14,14 +14,16 @@ class Api::CarsController < ApplicationController
       if car.save
         render json: car
       else
-        render json: { errors: cars.errors }, status: :unprocessable_entity 
+        render json: car.errors, status: 422
       end
     end
   
     def update
-      car = Car.find(params[:id])
-      car.update(complete: !car.complete)
-      render json: car
+      if @car.update(car_params)
+        render json: @car
+      else
+        render json: @car.errors, status: 422
+      end
     end
   
     def destroy
