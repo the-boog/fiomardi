@@ -56,17 +56,18 @@ class Filter extends React.Component {
   };
 
   render() {
-    const cars = this.props.cars;
-    const activeBodyStyle = this.state.activeBodyStyle;
-    const activeColor = this.state.activeColor;
-    const activeMake = this.state.activeMake;
-    const activeMiles = this.state.activeMiles;
-    const activeModel = this.state.activeModel;
-    const activeModelYear = this.state.activeModelYear;
-    const activePrice = this.state.activePrice;
-    const activeDrivetrain = this.state.activeDrivetrain;
-    const activeTransmission = this.state.activeTransmission;
-    const filterOptions = this.props.filterOptions;
+    const { cars, filterOptions } = this.props;
+    const {
+      activeBodyStyle,
+      activeColor,
+      activeMake,
+      activeMiles,
+      activeModel,
+      activeModelYear,
+      activePrice,
+      activeDrivetrain,
+      activeTransmission,
+    } = this.state;
     return (
       <>
         <Table style={{ width: "25%", margin: "0px" }}>

@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  Button,
-  Modal,
-  Image,
-  Header,
-  Form,
-  Container,
-} from "semantic-ui-react";
+import { Button, Modal, Form } from "semantic-ui-react";
 import axios from "axios";
+import AddPhotosModal from "./AddPhotosModal";
 
 class NewCarModal extends React.Component {
   state = {
@@ -443,13 +437,7 @@ class NewCarModal extends React.Component {
                 <Button floated="left" onClick={() => this.closeModal()}>
                   Cancel
                 </Button>
-                <Button
-                  onClick={() => console.log("click")}
-                  color="green"
-                  floated="right"
-                >
-                  {modalType == "create" ? "Create" : "Update"}
-                </Button>
+                <AddPhotosModal modalType={modalType} />
               </div>
             </Form>
           </Modal.Content>
